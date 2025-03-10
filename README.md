@@ -17,3 +17,8 @@ https://pytorch.org/tutorials/recipes/recipes/tuning_guide.html
 
 CUDA graphs capture a sequence of specific operations (i.e., kernel launches) that can later be replayed on new inputs with essentially a single kernel launch.
 Especially for scalar operations. 
+``` python
+@torch.compile
+def gelu(x):
+    return x * 0.5 * (1.0 + torch.erf(x / 1.41421))
+```
