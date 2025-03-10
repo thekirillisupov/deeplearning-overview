@@ -12,3 +12,5 @@ item() -> transfer to cpu python format, trigger synchronization between CPU and
 
 ### PyTorch uses a Caching Memory Allocator
 - allocating memory os expensive, so PyTorch reuses memory when possible. It keeps it in a cache instead of freeing memory
+
+https://pytorch.org/tutorials/recipes/recipes/tuning_guide.html
