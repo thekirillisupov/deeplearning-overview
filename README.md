@@ -130,3 +130,4 @@ This process happens in parallel across GPUs but managed via threads within a si
  - Each GPU independently updates its weights, but since gradients are identical (post-synchronization), model weights remain synchronized across GPUs.
 
 ---
+<img width="921" alt="Screenshot 2025-03-18 at 09 52 41" src="https://github.com/user-attachments/assets/556f46c9-74b4-4c38-8e5c-97297afd790f" />
