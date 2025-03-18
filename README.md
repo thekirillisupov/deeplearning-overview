@@ -106,3 +106,27 @@ if __name__ == "__main__":
         p.join()
 ```
 ---
+1. Data Parallel (DP):
+ - Multithreading-based (single process).
+ - Uses Python threads to manage multiple GPUs.
+ - Each GPU receives a separate copy of the model.
+ - The model weights (parameters) are initially loaded onto GPU-0 and then replicated (copied) to other GPUs.
+ - Each GPU receives a different batch of data, runs a forward and backward pass independently, and computes gradients.
+ - After each GPU computes gradients, these gradients are gathered back to GPU-0.
+ - Gradients from all GPUs are then averaged, and a single update step is executed on GPU-0.
+ - Finally, updated weights are copied back to all GPUs. This synchronization occurs after every batch.
+
+This process happens in parallel across GPUs but managed via threads within a single Python process. The Global Interpreter Lock (GIL) isn’t an issue here because the heavy computational workload is GPU-bound and handled by CUDA (outside the GIL).
+
+---
+
+2. Distributed Data Parallel (DDP):
+ - Multiprocessing-based (multiple processes).
+ - Each GPU has its own independent Python process.
+ - Each process independently loads a copy of the model on its GPU.
+ - DDP handles synchronization of parameters and gradients via a communication backend (NCCL usually).
+ - No single GPU acts as a “leader”: all GPUs/processes independently perform forward/backward computations on their own data batches simultaneously.
+ - After gradients are computed on each GPU, DDP synchronizes gradients across GPUs automatically (via an AllReduce operation).
+ - Each GPU independently updates its weights, but since gradients are identical (post-synchronization), model weights remain synchronized across GPUs.
+
+---
