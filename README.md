@@ -131,3 +131,4 @@ This process happens in parallel across GPUs but managed via threads within a si
 
 ---
 <img width="921" alt="Screenshot 2025-03-18 at 09 52 41" src="https://github.com/user-attachments/assets/556f46c9-74b4-4c38-8e5c-97297afd790f" />
+<img width="992" alt="Screenshot 2025-03-24 at 10 24 32" src="https://github.com/user-attachments/assets/08643f8a-6755-47c5-a0e2-946a56b8b20c" />
